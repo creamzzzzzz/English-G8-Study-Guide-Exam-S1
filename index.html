@@ -1,0 +1,870 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Unseen Poem Study Guide</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Figtree:wght@400;500;600;700;800&display=swap">
+<style>
+/* Layout: one long guide with a sticky, colour-coded section nav. Each section owns a hue:
+   blue = Criterion A (Analysing), green = Criterion B (Organising), orange = Criterion D (Using Language),
+   purple = poetic techniques, pink = quotations, cyan = effect on audience, gold = link to theme. */
+:root{
+  --bg:#F3F5FB; --surface:#FFFFFF; --surface-2:#E7ECF8; --fg:#172036; --muted:#55607A; --line:#D3DAEB;
+  --blue:#2A5BDB; --green:#0F7F55; --orange:#B8520A; --purple:#7240CF; --pink:#C4276A; --cyan:#0A7690; --gold:#8F6700; --slate:#586480;
+  --mark:rgba(255,214,10,.55);
+  --display:'Caveat',cursive; --body:'Figtree',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E1322; --surface:#161D33; --surface-2:#1F2847; --fg:#E7EBF7; --muted:#9BA7C6; --line:#2B3657;
+    --blue:#7FA6FF; --green:#4ED6A0; --orange:#FF9D57; --purple:#BC94FF; --pink:#FF86B1; --cyan:#52CFEA; --gold:#F3C65A; --slate:#9CA8C6;
+    --mark:rgba(243,198,90,.38); color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E1322; --surface:#161D33; --surface-2:#1F2847; --fg:#E7EBF7; --muted:#9BA7C6; --line:#2B3657;
+  --blue:#7FA6FF; --green:#4ED6A0; --orange:#FF9D57; --purple:#BC94FF; --pink:#FF86B1; --cyan:#52CFEA; --gold:#F3C65A; --slate:#9CA8C6;
+  --mark:rgba(243,198,90,.38); color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--bg); color:var(--fg); font:16px/1.65 var(--body);
+  padding-block:0 72px;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));
+  padding-right:max(16px, env(safe-area-inset-right, 0px));
+}
+body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top, 0px); z-index:10; background:var(--bg)}
+.wrap{max-width:980px; margin:0 auto}
+h1,h2,h3,h4,p{margin:0}
+h2{font:800 clamp(26px,5vw,36px)/1.15 var(--body); text-wrap:balance; letter-spacing:-.01em}
+h3{font:700 18px/1.3 var(--body)}
+button{font:inherit; color:inherit}
+.hl{background:linear-gradient(transparent 52%, var(--mark) 52%); padding:0 2px; border-radius:2px}
+.muted{color:var(--muted)}
+.sr{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
+
+/* hue helpers */
+.h-blue{--c:var(--blue)} .h-green{--c:var(--green)} .h-orange{--c:var(--orange)} .h-purple{--c:var(--purple)}
+.h-pink{--c:var(--pink)} .h-cyan{--c:var(--cyan)} .h-gold{--c:var(--gold)} .h-slate{--c:var(--slate)}
+.tint{background:color-mix(in srgb, var(--c) 12%, var(--surface)); border:1px solid color-mix(in srgb, var(--c) 38%, var(--surface)); border-radius:12px}
+.card{background:var(--surface); border:1px solid var(--line); border-radius:12px}
+.chip{--c:var(--slate); display:inline-flex; align-items:center; gap:7px; font:600 13px/1.2 var(--body); padding:6px 11px; border-radius:999px;
+  background:color-mix(in srgb, var(--c) 16%, var(--surface)); border:1px solid color-mix(in srgb, var(--c) 45%, var(--surface)); color:var(--fg)}
+.dot{width:9px; height:9px; border-radius:50%; background:var(--c); flex:none; display:inline-block}
+
+/* hero */
+.hero{padding-top:36px; padding-bottom:18px}
+.eyebrow{font:700 12px/1 var(--body); letter-spacing:.14em; text-transform:uppercase; color:var(--muted)}
+h1{font:700 clamp(50px,11vw,92px)/.95 var(--display); margin:12px 0 10px; color:var(--fg)}
+.sub{max-width:60ch; color:var(--muted); font-size:17px}
+.key{display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin:18px auto 22px}
+.keylabel{font:700 12px/1 var(--body); letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-right:4px}
+
+/* nav */
+.nav{position:sticky; top:env(safe-area-inset-top, 0px); z-index:5; background:var(--bg); border-bottom:1px solid var(--line);
+  margin-left:calc(-1 * max(16px, env(safe-area-inset-left, 0px))); margin-right:calc(-1 * max(16px, env(safe-area-inset-right, 0px)));
+  padding-left:max(16px, env(safe-area-inset-left, 0px)); padding-right:max(16px, env(safe-area-inset-right, 0px))}
+.nav-in{max-width:980px; margin:0 auto; display:flex; gap:8px; overflow-x:auto; padding-block:10px; scrollbar-width:thin}
+.navbtn{flex:none; display:inline-flex; align-items:center; gap:8px; font:600 14px/1 var(--body); background:var(--surface);
+  border:1px solid var(--line); border-radius:999px; padding:9px 14px; cursor:pointer}
+.navbtn:hover{border-color:var(--c)}
+.navbtn[aria-current="true"]{background:color-mix(in srgb, var(--c) 22%, var(--surface)); border-color:var(--c)}
+button:focus-visible, summary:focus-visible, input:focus-visible{outline:3px solid var(--c, var(--blue)); outline-offset:2px}
+@media (prefers-reduced-motion:no-preference){ .navbtn,.go,.fbtn{transition:background .15s, border-color .15s} }
+
+/* sections */
+.sec{padding-top:56px; scroll-margin-top:calc(env(safe-area-inset-top, 0px) + 64px)}
+.sec-head{display:flex; flex-direction:column; gap:4px; margin-bottom:22px}
+.sec-tag{font:700 26px/1 var(--display); color:var(--c)}
+.lead{max-width:66ch; font-size:17px; margin-bottom:20px}
+.sub-h{display:flex; align-items:center; gap:10px; margin:34px 0 14px}
+.sub-h::before{content:""; width:12px; height:12px; border-radius:3px; background:var(--c); flex:none}
+.next{margin-top:30px; display:flex; justify-content:flex-end}
+.go{font:700 14px/1 var(--body); cursor:pointer; padding:11px 16px; border-radius:999px; border:1px solid var(--c); background:color-mix(in srgb, var(--c) 14%, var(--surface))}
+.go:hover{background:color-mix(in srgb, var(--c) 26%, var(--surface))}
+.callout{padding:16px 18px; display:grid; gap:6px}
+.callout b.lab{font:700 12px/1 var(--body); letter-spacing:.1em; text-transform:uppercase; color:var(--c)}
+
+/* overview */
+.facts{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px}
+.fact{padding:16px}
+.fact small{display:block; font:700 12px/1 var(--body); letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-bottom:8px}
+.fact strong{font-size:19px; line-height:1.25}
+.musts{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:10px}
+.must{padding:14px 16px; display:grid; gap:4px}
+.must b{color:var(--c)}
+.must span{font-size:14px; color:var(--muted)}
+.prep{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:12px}
+.prepc{padding:18px; display:grid; gap:10px; align-content:start}
+.prepc h3{color:var(--c)}
+.prepc p{font-size:15px}
+.btnrow{display:flex; flex-wrap:wrap; gap:8px}
+
+/* criteria */
+.venn{max-width:380px; margin:0 auto 6px}
+.venn svg{width:100%; height:auto; display:block}
+.venn text{font-family:var(--body); fill:var(--fg)}
+.vc{fill-opacity:.2; stroke-width:2}
+.va{fill:var(--blue); stroke:var(--blue)} .vb{fill:var(--green); stroke:var(--green)} .vd{fill:var(--orange); stroke:var(--orange)}
+.cap{text-align:center; color:var(--muted); font-size:14px; margin-bottom:22px}
+.crit{display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:14px; align-items:start}
+.critc{overflow:hidden; min-width:0}
+.crit-h{padding:14px 16px; background:color-mix(in srgb, var(--c) 18%, var(--surface)); border-bottom:1px solid color-mix(in srgb, var(--c) 38%, var(--surface))}
+.crit-h small{display:block; font:700 12px/1 var(--body); letter-spacing:.1em; text-transform:uppercase; color:var(--c); margin-bottom:5px}
+.crit-h h3{font-size:20px}
+.strand{border-top:1px solid var(--line)}
+.strand:first-of-type{border-top:0}
+.strand summary{list-style:none; cursor:pointer; padding:14px 16px; display:grid; grid-template-columns:auto 1fr auto; gap:10px; align-items:start; font-size:15px}
+.strand summary::-webkit-details-marker{display:none}
+.strand summary::after{content:"+"; font-weight:700; color:var(--c); font-size:18px; line-height:1.2}
+.strand[open] summary::after{content:"−"}
+.code{font:800 13px/1 var(--body); padding:5px 7px; border-radius:6px; background:color-mix(in srgb, var(--c) 20%, var(--surface)); color:var(--c); margin-top:2px}
+.strand-body{padding:0 16px 16px; display:grid; gap:10px; font-size:15px}
+.strand-body b{color:var(--c)}
+
+/* blueprint */
+.budget{display:grid; grid-template-columns:repeat(auto-fill,minmax(34px,1fr)); gap:6px; margin:6px 0 14px}
+.cell{aspect-ratio:1; display:grid; place-items:center; border-radius:8px; font:700 13px/1 var(--body); border:1px solid transparent; color:var(--fg)}
+.cell.frame{background:color-mix(in srgb, var(--green) 26%, var(--surface)); border-color:var(--green)}
+.cell.tq{background:linear-gradient(135deg, color-mix(in srgb, var(--purple) 32%, var(--surface)) 50%, color-mix(in srgb, var(--pink) 32%, var(--surface)) 50%); border-color:var(--purple)}
+.cell.mean{background:color-mix(in srgb, var(--blue) 26%, var(--surface)); border-color:var(--blue)}
+.cell.eff{background:color-mix(in srgb, var(--cyan) 26%, var(--surface)); border-color:var(--cyan)}
+.cell.link{background:color-mix(in srgb, var(--gold) 28%, var(--surface)); border-color:var(--gold)}
+.cell.extra{border:1.5px dashed var(--slate); color:var(--muted); background:transparent}
+.cell.lim{outline:2px solid var(--fg); outline-offset:2px}
+.legend{display:flex; flex-wrap:wrap; gap:8px}
+.flow{display:flex; align-items:stretch; gap:8px}
+.node{flex:1 1 0; min-width:0; padding:14px; display:grid; gap:6px; align-content:start}
+.node b{color:var(--c)}
+.node span{font-size:14px}
+.node .st{font:800 12px/1 var(--body); letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+.arr{align-self:center; font-size:22px; color:var(--muted); flex:none}
+@media (max-width:700px){ .flow{flex-direction:column} .arr{transform:rotate(90deg); align-self:center} }
+.starters{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:12px}
+.stc{padding:16px; display:grid; gap:8px; align-content:start}
+.stc h3{color:var(--c); font-size:17px}
+.stc ul{margin:0; padding-left:18px; display:grid; gap:4px; font-size:15px}
+.shape{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:12px}
+.shape .tint{padding:16px; display:grid; gap:6px}
+.shape h3{color:var(--c)}
+
+/* techniques */
+.reading{counter-reset:none}
+.annot{padding:18px 20px; display:grid; gap:14px}
+.poemx{font:italic 500 19px/2 var(--body); margin:0}
+.a-person{text-decoration:underline wavy var(--purple); text-decoration-thickness:2px; text-underline-offset:6px}
+.a-image{background:color-mix(in srgb, var(--cyan) 28%, transparent); border-radius:3px; padding:0 3px}
+.a-word{outline:2px solid var(--blue); outline-offset:2px; border-radius:3px; padding:0 3px}
+.a-shift{border-bottom:3px solid var(--green)}
+.notes{display:flex; flex-wrap:wrap; gap:8px}
+.tools{display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:14px}
+.fbtn{font:600 14px/1 var(--body); padding:9px 14px; border-radius:999px; border:1px solid var(--line); background:var(--surface); cursor:pointer}
+.fbtn[aria-pressed="true"]{background:color-mix(in srgb, var(--purple) 22%, var(--surface)); border-color:var(--purple)}
+.search{flex:1 1 200px; min-width:0; font:inherit; padding:9px 14px; border-radius:999px; border:1px solid var(--line); background:var(--surface); color:var(--fg)}
+.count{font-size:14px; color:var(--muted); margin-bottom:12px}
+.tgrid{display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:12px; align-items:start}
+.tcard{background:color-mix(in srgb, var(--purple) 9%, var(--surface)); border:1px solid color-mix(in srgb, var(--purple) 32%, var(--surface)); border-radius:10px; min-width:0}
+.tcard summary{list-style:none; cursor:pointer; padding:13px 14px; display:grid; gap:5px}
+.tcard summary::-webkit-details-marker{display:none}
+.tcard summary::after{content:"Effect and example +"; font-size:12px; font-weight:600; color:var(--muted)}
+.tcard[open] summary::after{content:"Hide −"}
+.tcard .term{font-weight:800; font-size:17px; color:var(--purple)}
+.tcard .grp{font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); font-weight:700}
+.tcard .def{font-size:14px}
+.tcard .more{padding:0 14px 14px; display:grid; gap:8px; font-size:14px}
+.tcard .more b{color:var(--purple)}
+.empty{padding:20px; text-align:center; color:var(--muted)}
+
+/* quotes */
+.anat{display:flex; flex-wrap:wrap; gap:10px; align-items:flex-start; padding:18px}
+.part{display:grid; gap:6px; justify-items:start; min-width:0; flex:1 1 150px}
+.part .bx{padding:10px 12px; border-radius:9px; font-size:15px; background:color-mix(in srgb, var(--c) 16%, var(--surface)); border:1px solid color-mix(in srgb, var(--c) 48%, var(--surface)); overflow-wrap:anywhere}
+.part small{font:700 11px/1.3 var(--body); letter-spacing:.08em; text-transform:uppercase; color:var(--c)}
+.levels{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:12px}
+.lvl{padding:16px; display:grid; gap:8px; align-content:start}
+.lvl h3{color:var(--c)}
+.lvl q{quotes:none; font-size:15px}
+.rules{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:10px}
+.rule{padding:14px 16px; display:grid; gap:4px; font-size:15px}
+.rule b{color:var(--pink)}
+
+/* model paragraph */
+.focus{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px}
+.fbtn.role{background:color-mix(in srgb, var(--c) 12%, var(--surface)); border-color:color-mix(in srgb, var(--c) 45%, var(--surface)); display:inline-flex; align-items:center; gap:7px}
+.fbtn.role[aria-pressed="true"]{background:color-mix(in srgb, var(--c) 30%, var(--surface)); border-color:var(--c)}
+.roledesc{padding:12px 16px; margin-bottom:14px; font-size:15px; min-height:3.4em}
+.model{padding:22px 22px 18px; font-size:17px; line-height:2.05}
+.model p{margin:0}
+.seg{--c:var(--slate); background:color-mix(in srgb, var(--c) 22%, transparent); border-bottom:2px solid color-mix(in srgb, var(--c) 65%, transparent); border-radius:3px; padding:1px 2px;
+  -webkit-box-decoration-break:clone; box-decoration-break:clone}
+.r-frame{--c:var(--green)} .r-tech{--c:var(--purple)} .r-quote{--c:var(--pink)} .r-mean{--c:var(--blue)} .r-eff{--c:var(--cyan)} .r-link{--c:var(--gold)}
+.model[data-focus]:not([data-focus="all"]) .seg{background:none; border-bottom-color:transparent; opacity:.5}
+.model[data-focus="frame"] .r-frame, .model[data-focus="tech"] .r-tech, .model[data-focus="quote"] .r-quote,
+.model[data-focus="mean"] .r-mean, .model[data-focus="eff"] .r-eff, .model[data-focus="link"] .r-link{
+  background:color-mix(in srgb, var(--c) 30%, transparent); border-bottom-color:var(--c); opacity:1}
+.n{font:800 10px/1 var(--body); color:var(--muted); margin:0 3px 0 6px; vertical-align:super}
+.model.hide-n .n{display:none}
+.togg{display:inline-flex; align-items:center; gap:8px; font-size:14px; color:var(--muted); margin-top:12px; cursor:pointer}
+.why{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:12px; margin-top:18px}
+.why .tint{padding:16px; display:grid; gap:6px; font-size:15px}
+.why b.lab{font:800 12px/1 var(--body); letter-spacing:.1em; text-transform:uppercase; color:var(--c)}
+
+/* language */
+.bank{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px}
+.bankc{padding:16px; display:grid; gap:10px; align-content:start}
+.bankc h3{font-size:16px; color:var(--orange)}
+.words{display:flex; flex-wrap:wrap; gap:6px}
+.w{--c:var(--orange); font-size:14px; font-weight:600; padding:5px 10px; border-radius:8px; background:color-mix(in srgb, var(--c) 15%, var(--surface)); border:1px solid color-mix(in srgb, var(--c) 40%, var(--surface))}
+.tablewrap{overflow-x:auto}
+table{border-collapse:collapse; width:100%; min-width:420px; font-size:15px}
+th,td{text-align:left; padding:11px 14px; border-bottom:1px solid var(--line)}
+th{font:700 12px/1 var(--body); letter-spacing:.1em; text-transform:uppercase; color:var(--orange); background:color-mix(in srgb, var(--orange) 12%, var(--surface))}
+td.no{color:var(--muted); text-decoration:line-through; text-decoration-color:color-mix(in srgb, var(--orange) 70%, transparent)}
+.variety{display:grid; gap:10px}
+.vrow{display:grid; grid-template-columns:110px 1fr; gap:12px; padding:14px 16px; align-items:start}
+.vrow b{color:var(--orange)}
+@media (max-width:520px){ .vrow{grid-template-columns:1fr; gap:4px} }
+
+/* proofread */
+.passes{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:10px}
+.pass{padding:14px 16px; display:grid; gap:4px; font-size:15px}
+.pass b{color:var(--c)}
+.pass .st{font:800 12px/1 var(--body); letter-spacing:.1em; text-transform:uppercase; color:var(--muted)}
+.errs{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:12px}
+.err{padding:16px; display:grid; gap:6px; font-size:15px; align-content:start}
+.err h3{color:var(--orange); font-size:16px}
+.ex{font-size:14px; color:var(--muted)}
+.ex s{text-decoration-color:var(--orange)}
+
+/* final check */
+.ckgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:14px; align-items:start}
+.ckc{padding:16px; display:grid; gap:10px}
+.ckc h3{color:var(--c)}
+.ck{display:flex; gap:10px; align-items:flex-start; font-size:15px; cursor:pointer}
+.ck input{width:18px; height:18px; margin-top:3px; accent-color:var(--c); flex:none}
+.prog{margin-bottom:18px; display:grid; gap:8px}
+.bar{height:12px; border-radius:99px; background:var(--surface-2); overflow:hidden}
+.bar i{display:block; height:100%; width:0; background:linear-gradient(90deg, var(--blue), var(--green), var(--orange))}
+@media (prefers-reduced-motion:no-preference){ .bar i{transition:width .3s} }
+.proghead{display:flex; justify-content:space-between; gap:12px; align-items:center; flex-wrap:wrap}
+.reset{font:600 13px/1 var(--body); background:none; border:1px solid var(--line); border-radius:999px; padding:8px 12px; cursor:pointer; color:var(--muted)}
+
+.totop{position:fixed; right:calc(16px + env(safe-area-inset-right, 0px)); bottom:calc(16px + env(safe-area-inset-bottom, 0px)); z-index:6;
+  width:46px; height:46px; border-radius:50%; border:1px solid var(--line); background:var(--surface); font-size:20px; cursor:pointer; box-shadow:0 2px 10px rgba(0,0,0,.18)}
+</style>
+
+<header class="wrap hero">
+  <p class="eyebrow">Unseen poem · one extended paragraph</p>
+  <h1>Language and Literature</h1>
+  <p class="sub">A study guide for the exam: what is assessed, how to build the paragraph, and the tools to analyse any poem you have not seen before.</p>
+</header>
+
+<div class="wrap key" aria-label="Colour key">
+  <span class="keylabel">Colour key</span>
+  <span class="chip h-blue"><i class="dot"></i>A · Analysing</span>
+  <span class="chip h-green"><i class="dot"></i>B · Organising</span>
+  <span class="chip h-orange"><i class="dot"></i>D · Using Language</span>
+  <span class="chip h-purple"><i class="dot"></i>Poetic techniques</span>
+  <span class="chip h-pink"><i class="dot"></i>Quotations</span>
+  <span class="chip h-cyan"><i class="dot"></i>Effect on audience</span>
+  <span class="chip h-gold"><i class="dot"></i>Link to theme</span>
+  <span class="chip"><span class="hl">Key term</span></span>
+</div>
+
+<nav class="nav" aria-label="Guide sections">
+  <div class="nav-in">
+    <button class="navbtn h-slate" data-go="overview"><i class="dot"></i>Overview</button>
+    <button class="navbtn h-slate" data-go="criteria"><i class="dot"></i>Criteria</button>
+    <button class="navbtn h-green" data-go="blueprint"><i class="dot"></i>Blueprint</button>
+    <button class="navbtn h-purple" data-go="techniques"><i class="dot"></i>Techniques</button>
+    <button class="navbtn h-pink" data-go="quotes"><i class="dot"></i>Quotations</button>
+    <button class="navbtn h-blue" data-go="model"><i class="dot"></i>Model paragraph</button>
+    <button class="navbtn h-orange" data-go="language"><i class="dot"></i>Language</button>
+    <button class="navbtn h-orange" data-go="proofread"><i class="dot"></i>Proofreading</button>
+    <button class="navbtn h-gold" data-go="check"><i class="dot"></i>Final check</button>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<!-- OVERVIEW -->
+<section class="sec h-slate" id="overview">
+  <div class="sec-head"><span class="sec-tag">start here</span><h2>What is on the exam</h2></div>
+  <p class="lead">You have explored how language, both persuasive and poetic, can influence thinking and share experiences and beliefs. The exam asks you to show that skill on a poem you have never seen.</p>
+
+  <div class="facts">
+    <div class="card fact"><small>The task</small><strong>One extended paragraph</strong></div>
+    <div class="card fact"><small>The text</small><strong>An <span class="hl">unseen</span> poem</strong></div>
+    <div class="card fact"><small>The length</small><strong>14 to 20 sentences</strong></div>
+    <div class="card fact"><small>The question</small><strong><span class="hl">How</span> poetic techniques share an experience or belief</strong></div>
+  </div>
+
+  <h3 class="sub-h">Your paragraph must include</h3>
+  <div class="musts">
+    <div class="tint must h-green"><b>A clear theme statement</b><span>The big idea the poem communicates about its topic.</span></div>
+    <div class="tint must h-blue"><b>The poet’s intentions</b><span>What the poet wants to say and why.</span></div>
+    <div class="tint must h-cyan"><b>The impact on an audience</b><span>What the reader thinks or feels as a result.</span></div>
+    <div class="tint must h-pink"><b>Quotations as evidence</b><span>Integrated correctly into your own sentences.</span></div>
+    <div class="tint must h-purple"><b>Language and/or structure</b><span>Your choice of which to analyse, or both.</span></div>
+  </div>
+
+  <div class="tint callout h-gold" style="margin-top:18px">
+    <b class="lab">The word that matters</b>
+    <p><span class="hl">How</span> means you analyse the method. Name the technique, point to it in a quotation, then explain what it makes the audience think or feel.</p>
+  </div>
+
+  <h3 class="sub-h">Preparation map</h3>
+  <div class="prep">
+    <div class="card prepc h-purple">
+      <h3>Vocabulary</h3>
+      <p>Know the unit vocabulary and poetic techniques, and use specific terminology in your paragraph.</p>
+      <div class="btnrow"><button class="go" data-go="techniques">Techniques</button><button class="go" data-go="language">Language bank</button></div>
+    </div>
+    <div class="card prepc h-cyan">
+      <h3>Information literacy</h3>
+      <p>Highlight, take notes and draw out key ideas. Look for techniques and comment on how they convey a belief or experience.</p>
+      <div class="btnrow"><button class="go" data-go="techniques">Reading a poem</button><button class="go" data-go="model">Model paragraph</button></div>
+    </div>
+    <div class="card prepc h-green">
+      <h3>Writing</h3>
+      <p>Paragraph structure, integrating quotations, an academic tone, discussing techniques and their effects, and proofreading.</p>
+      <div class="btnrow"><button class="go" data-go="blueprint">Blueprint</button><button class="go" data-go="quotes">Quotations</button><button class="go" data-go="proofread">Proofreading</button></div>
+    </div>
+  </div>
+  <div class="next"><button class="go" data-go="criteria">Next: Criteria →</button></div>
+</section>
+
+<!-- CRITERIA -->
+<section class="sec h-slate" id="criteria">
+  <div class="sec-head"><span class="sec-tag">how you are marked</span><h2>The three assessed criteria</h2></div>
+  <div class="venn">
+    <svg viewBox="0 0 420 320" role="img" aria-label="Three overlapping circles for Criterion A Analysing, Criterion B Organising and Criterion D Using Language, overlapping at your paragraph">
+      <circle class="vc va" cx="150" cy="115" r="90"/>
+      <circle class="vc vb" cx="270" cy="115" r="90"/>
+      <circle class="vc vd" cx="210" cy="205" r="90"/>
+      <text x="100" y="105" text-anchor="middle" font-size="30" font-weight="800" style="fill:var(--blue)">A</text>
+      <text x="100" y="128" text-anchor="middle" font-size="13" font-weight="600">Analysing</text>
+      <text x="320" y="105" text-anchor="middle" font-size="30" font-weight="800" style="fill:var(--green)">B</text>
+      <text x="320" y="128" text-anchor="middle" font-size="13" font-weight="600">Organising</text>
+      <text x="210" y="252" text-anchor="middle" font-size="30" font-weight="800" style="fill:var(--orange)">D</text>
+      <text x="210" y="274" text-anchor="middle" font-size="13" font-weight="600">Using Language</text>
+      <text x="210" y="146" text-anchor="middle" font-size="12" font-weight="700">Your</text>
+      <text x="210" y="161" text-anchor="middle" font-size="12" font-weight="700">paragraph</text>
+    </svg>
+  </div>
+  <p class="cap">One paragraph is marked on all three at once. Open a strand to see what it asks for.</p>
+
+  <div class="crit">
+    <div class="card critc h-blue">
+      <div class="crit-h"><small>Criterion A</small><h3>Analysing</h3></div>
+      <details class="strand"><summary><b class="code">A2</b><span>Identify and explain the effects of the creator’s choices on an audience.</span></summary>
+        <div class="strand-body"><p><b>In plain words:</b> name a technique, then say what it makes the reader think or feel.</p><p><b>Show it by:</b> technique, then quotation, then “As a result, the reader…”.</p></div></details>
+      <details class="strand"><summary><b class="code">A3</b><span>Justify opinions and ideas, using examples, explanations and terminology.</span></summary>
+        <div class="strand-body"><p><b>In plain words:</b> every claim about the poem needs proof and reasoning.</p><p><b>Show it by:</b> a quotation as the example, an explanation of the key word, and exact terms such as <span class="hl">personification</span>.</p></div></details>
+    </div>
+    <div class="card critc h-green">
+      <div class="crit-h"><small>Criterion B</small><h3>Organising</h3></div>
+      <details class="strand"><summary><b class="code">B1</b><span>Employ organisational structures that serve the context and intention.</span></summary>
+        <div class="strand-body"><p><b>In plain words:</b> use the shape of a formal analytical paragraph.</p><p><b>Show it by:</b> topic sentence, developing sentences, supporting sentences, concluding sentence.</p></div></details>
+      <details class="strand"><summary><b class="code">B2</b><span>Organise opinions and ideas in a sustained, coherent and logical manner.</span></summary>
+        <div class="strand-body"><p><b>In plain words:</b> your ideas build step by step and keep returning to the theme.</p><p><b>Show it by:</b> linking words such as <span class="hl">as a result</span> and <span class="hl">overall</span>, and ending each point on the theme.</p></div></details>
+      <details class="strand"><summary><b class="code">B3</b><span>Integrate quotations correctly.</span></summary>
+        <div class="strand-body"><p><b>In plain words:</b> quotations sit inside your own sentences, exact, short and cited.</p><p><b>Show it by:</b> lead-in words, then “quotation”, then (Poet line).</p></div></details>
+    </div>
+    <div class="card critc h-orange">
+      <div class="crit-h"><small>Criterion D</small><h3>Using Language</h3></div>
+      <details class="strand"><summary><b class="code">D1</b><span>Use appropriate and varied vocabulary, sentence structures and forms of expression.</span></summary>
+        <div class="strand-body"><p><b>In plain words:</b> avoid repeating “shows”, and mix longer and shorter sentences.</p><p><b>Show it by:</b> the verb bank and sentence patterns in the Language section.</p></div></details>
+      <details class="strand"><summary><b class="code">D2</b><span>Write in a register and style that serve the context and intention.</span></summary>
+        <div class="strand-body"><p><b>In plain words:</b> your audience is academic and formal.</p><p><b>Show it by:</b> third person, present tense, precise terminology, no slang.</p></div></details>
+      <details class="strand"><summary><b class="code">D3</b><span>Use correct grammar, syntax and punctuation.</span></summary>
+        <div class="strand-body"><p><b>In plain words:</b> sentences are complete, controlled and punctuated accurately.</p><p><b>Show it by:</b> the proofreading passes.</p></div></details>
+      <details class="strand"><summary><b class="code">D4</b><span>Spell with accuracy.</span></summary>
+        <div class="strand-body"><p><b>In plain words:</b> including every technique name.</p><p><b>Show it by:</b> the terminology spelling bank.</p></div></details>
+    </div>
+  </div>
+  <div class="next"><button class="go" data-go="blueprint">Next: Blueprint →</button></div>
+</section>
+
+<!-- BLUEPRINT -->
+<section class="sec h-green" id="blueprint">
+  <div class="sec-head"><span class="sec-tag">Criterion B · Organising</span><h2>Paragraph blueprint</h2></div>
+  <p class="lead">A topic sentence, developing sentences, supporting sentences and a concluding sentence. The map below shows one way to spend 16 of your 14 to 20 sentences.</p>
+
+  <h3 class="sub-h">Sentence map</h3>
+  <div class="budget" id="budget" role="img" aria-label="Twenty sentence slots coloured by job: two framing sentences, three repeating four-sentence cycles, two closing sentences, then four optional extra slots"></div>
+  <div class="legend">
+    <span class="chip h-green"><i class="dot"></i>Frame: topic or conclusion</span>
+    <span class="chip h-purple"><i class="dot"></i>Technique + quotation</span>
+    <span class="chip h-blue"><i class="dot"></i>Meaning</span>
+    <span class="chip h-cyan"><i class="dot"></i>Effect on reader</span>
+    <span class="chip h-gold"><i class="dot"></i>Link to theme</span>
+    <span class="chip"><i class="dot" style="background:transparent;border:1.5px dashed var(--slate)"></i>Room for extra insight</span>
+  </div>
+  <p class="muted" style="margin-top:10px;font-size:14px">Ringed boxes mark the limits: sentence 14 is the minimum and sentence 20 is the maximum.</p>
+
+  <h3 class="sub-h">The four-sentence cycle</h3>
+  <div class="flow">
+    <div class="tint node h-purple"><span class="st">Step 1</span><b>Technique + quotation</b><span>Name the device and introduce the evidence.</span></div>
+    <span class="arr" aria-hidden="true">→</span>
+    <div class="tint node h-blue"><span class="st">Step 2</span><b>Meaning</b><span>Unpack the key word or comparison.</span></div>
+    <span class="arr" aria-hidden="true">→</span>
+    <div class="tint node h-cyan"><span class="st">Step 3</span><b>Effect</b><span>What the audience pictures or feels.</span></div>
+    <span class="arr" aria-hidden="true">→</span>
+    <div class="tint node h-gold"><span class="st">Step 4</span><b>Link to theme</b><span>Tie the point back to the big idea.</span></div>
+  </div>
+
+  <h3 class="sub-h">The frame</h3>
+  <div class="shape">
+    <div class="tint h-green"><h3>Opening (1 to 2 sentences)</h3><p>Optional hook, then the poem title, the poet, your <span class="hl">theme statement</span> and the techniques you will analyse.</p></div>
+    <div class="tint h-green"><h3>Closing (1 to 2 sentences)</h3><p>Restate how the techniques present the idea, then state the message or impact on the audience.</p></div>
+  </div>
+
+  <h3 class="sub-h">Sentence starters by job</h3>
+  <div class="starters">
+    <div class="card stc h-green"><h3>Opening</h3><ul><li>“[Title]” by [Poet] suggests that…</li><li>…through the use of [technique], [technique] and [technique].</li><li>[Poet] explores the idea that…</li></ul></div>
+    <div class="card stc h-purple"><h3>Technique + quotation</h3><ul><li>[Poet] introduces this idea through the [technique]…</li><li>[Poet] then goes on to personify…</li><li>The poem’s turning point arrives in the image…</li></ul></div>
+    <div class="card stc h-blue"><h3>Meaning</h3><ul><li>This compares… to…</li><li>The word “…” captures both… and…</li><li>The use of “…” suggests…</li></ul></div>
+    <div class="card stc h-cyan"><h3>Effect</h3><ul><li>As a result, the reader pictures…</li><li>This makes the reader sympathise with…</li><li>This creates a sense of… before…</li></ul></div>
+    <div class="card stc h-gold"><h3>Link to theme</h3><ul><li>This develops the theme by suggesting…</li><li>This reflects how people…, which strengthens the theme that…</li><li>This establishes what is at stake in the theme…</li></ul></div>
+    <div class="card stc h-green"><h3>Closing</h3><ul><li>Overall, [Poet] uses… to present…</li><li>The poem clearly shows that…</li><li>Ultimately, the audience is encouraged to…</li></ul></div>
+  </div>
+  <div class="next"><button class="go" data-go="techniques">Next: Techniques →</button></div>
+</section>
+
+<!-- TECHNIQUES -->
+<section class="sec h-purple" id="techniques">
+  <div class="sec-head"><span class="sec-tag">vocabulary + information literacy</span><h2>Poetic techniques</h2></div>
+  <p class="lead">Terminology is part of your evidence. Learn the term, what it does and the effect it has, so you can say <em>how</em> a belief or experience is shared.</p>
+
+  <h3 class="sub-h">Reading an unseen poem</h3>
+  <div class="flow reading">
+    <div class="tint node h-slate"><span class="st">1</span><b>Title and speaker</b><span>Who is speaking? What does the title promise?</span></div>
+    <span class="arr" aria-hidden="true">→</span>
+    <div class="tint node h-slate"><span class="st">2</span><b>Experience or belief</b><span>What happens, or what is being argued?</span></div>
+    <span class="arr" aria-hidden="true">→</span>
+    <div class="tint node h-purple"><span class="st">3</span><b>Techniques</b><span>Mark comparisons, senses, sounds and repeated words.</span></div>
+    <span class="arr" aria-hidden="true">→</span>
+    <div class="tint node h-green"><span class="st">4</span><b>Structure shifts</b><span>Stanzas, line breaks, punctuation, turning point.</span></div>
+    <span class="arr" aria-hidden="true">→</span>
+    <div class="tint node h-gold"><span class="st">5</span><b>Theme and intention</b><span>What should the audience think or feel?</span></div>
+  </div>
+
+  <h3 class="sub-h">How to annotate</h3>
+  <div class="card annot">
+    <p class="poemx">
+      The street <span class="a-person">holds its breath</span> at dusk,<br>
+      <span class="a-image">lamplight spilling, slow and gold</span>,<br>
+      while the last bus <span class="a-person">sighs</span> away<br>
+      and leaves the <span class="a-word">evening</span> <span class="a-shift">cold</span>.
+    </p>
+    <div class="notes">
+      <span class="chip h-purple"><span class="a-person">Wavy underline</span> technique</span>
+      <span class="chip h-cyan"><span class="a-image">Highlight</span> sensory imagery</span>
+      <span class="chip h-blue"><span class="a-word">Box</span> a striking word</span>
+      <span class="chip h-green"><span class="a-shift">Bar</span> a shift in mood or structure</span>
+    </div>
+    <p class="muted" style="font-size:14px">Original four-line example for practice. Here, personification in “holds its breath” and “sighs” makes the street feel patient, then the final line shifts the mood to loss.</p>
+  </div>
+
+  <h3 class="sub-h">Technique toolkit</h3>
+  <div class="tools" id="tfilters">
+    <button class="fbtn" data-g="all" aria-pressed="true">All</button>
+    <button class="fbtn" data-g="Figurative" aria-pressed="false">Figurative language</button>
+    <button class="fbtn" data-g="Sound" aria-pressed="false">Sound</button>
+    <button class="fbtn" data-g="Structure" aria-pressed="false">Structure</button>
+    <button class="fbtn" data-g="Voice" aria-pressed="false">Voice and word choice</button>
+    <label class="sr" for="tsearch">Search techniques</label>
+    <input class="search h-purple" id="tsearch" type="search" placeholder="Search a technique…">
+  </div>
+  <div class="tools">
+    <button class="fbtn" id="expandAll" type="button">Expand all</button>
+    <button class="fbtn" id="collapseAll" type="button">Collapse all</button>
+  </div>
+  <p class="count" id="tcount" aria-live="polite"></p>
+  <div class="tgrid" id="tgrid"></div>
+  <p class="empty" id="tempty" hidden>No technique matches that search.</p>
+  <div class="next"><button class="go" data-go="quotes">Next: Quotations →</button></div>
+</section>
+
+<!-- QUOTATIONS -->
+<section class="sec h-pink" id="quotes">
+  <div class="sec-head"><span class="sec-tag">Criterion B3 · Integrate quotations correctly</span><h2>Quotations as evidence</h2></div>
+  <p class="lead">A quotation is proof, so it must be exact, short and woven into your sentence. Then you analyse it.</p>
+
+  <h3 class="sub-h">Anatomy of an integrated quotation</h3>
+  <div class="card anat">
+    <div class="part h-green"><div class="bx">Frost introduces this idea through the metaphor</div><small>Lead-in, your words</small></div>
+    <div class="part h-pink"><div class="bx">“Nature’s first green is gold”</div><small>Exact quotation</small></div>
+    <div class="part h-slate"><div class="bx">(Frost 1)</div><small>Citation: poet + line</small></div>
+    <div class="part h-blue"><div class="bx">This compares the delicate first leaves of spring to a precious metal.</div><small>Analysis, your words</small></div>
+  </div>
+
+  <h3 class="sub-h">Three levels of integration</h3>
+  <div class="levels">
+    <div class="card lvl h-slate"><h3>Dropped in</h3><q>Frost writes about gold. “Nature’s first green is gold” (Frost 1).</q><p class="muted" style="font-size:14px">The quotation floats alone and is not part of a sentence. Avoid.</p></div>
+    <div class="card lvl h-pink"><h3>Introduced</h3><q>Frost introduces this idea through the metaphor “Nature’s first green is gold” (Frost 1).</q><p class="muted" style="font-size:14px">A lead-in names the technique and carries the quotation. Secure.</p></div>
+    <div class="card lvl h-pink"><h3>Woven in</h3><q>By calling spring’s first leaves “gold” (Frost 1), the poet presents them as treasure.</q><p class="muted" style="font-size:14px">One key word sits inside your own grammar. Strongest.</p></div>
+  </div>
+
+  <h3 class="sub-h">Zoom in on one word</h3>
+  <div class="flow">
+    <div class="tint node h-pink"><span class="st">Quotation</span><b>“Her hardest hue to hold”</b><span>(Frost 2)</span></div>
+    <span class="arr" aria-hidden="true">→</span>
+    <div class="tint node h-blue"><span class="st">Focus word</span><b>“hold”</b><span>A verb of effort.</span></div>
+    <span class="arr" aria-hidden="true">→</span>
+    <div class="tint node h-cyan"><span class="st">Effect</span><b>Helplessness</b><span>Something slips through the speaker’s fingers.</span></div>
+    <span class="arr" aria-hidden="true">→</span>
+    <div class="tint node h-gold"><span class="st">Theme</span><b>Change is unavoidable</b><span>Holding on to a moment is impossible.</span></div>
+  </div>
+
+  <h3 class="sub-h">Quotation rules</h3>
+  <div class="rules">
+    <div class="tint rule h-pink"><b>Copy exactly</b><span>Keep the poet’s spelling, wording and capitals.</span></div>
+    <div class="tint rule h-pink"><b>Keep it short</b><span>A phrase or one word is often enough to analyse.</span></div>
+    <div class="tint rule h-pink"><b>Use quotation marks</b><span>Every borrowed word sits inside them, and poem titles do too.</span></div>
+    <div class="tint rule h-pink"><b>Cite the line</b><span>Poet’s surname and line number, as in (Frost 1).</span></div>
+    <div class="tint rule h-pink"><b>Lead in, then analyse</b><span>Never leave a quotation without explaining its effect.</span></div>
+    <div class="tint rule h-pink"><b>Vary your lead-ins</b><span>Avoid repeating “the quote shows” in every sentence.</span></div>
+  </div>
+  <div class="next"><button class="go" data-go="model">Next: Model paragraph →</button></div>
+</section>
+
+<!-- MODEL -->
+<section class="sec h-blue" id="model">
+  <div class="sec-head"><span class="sec-tag">Criterion A · Analysing</span><h2>Model paragraph, colour-coded</h2></div>
+  <p class="lead">A worked example on Robert Frost’s “Nothing Gold Can Stay”: 17 sentences. Tap a colour to light up only that job, and watch the same cycle repeat.</p>
+
+  <div class="focus" id="focus" role="group" aria-label="Highlight a sentence job">
+    <button class="fbtn" data-f="all" aria-pressed="true">All jobs</button>
+    <button class="fbtn role h-green" data-f="frame" aria-pressed="false"><i class="dot"></i>Frame</button>
+    <button class="fbtn role h-purple" data-f="tech" aria-pressed="false"><i class="dot"></i>Technique</button>
+    <button class="fbtn role h-pink" data-f="quote" aria-pressed="false"><i class="dot"></i>Quotation</button>
+    <button class="fbtn role h-blue" data-f="mean" aria-pressed="false"><i class="dot"></i>Meaning</button>
+    <button class="fbtn role h-cyan" data-f="eff" aria-pressed="false"><i class="dot"></i>Effect</button>
+    <button class="fbtn role h-gold" data-f="link" aria-pressed="false"><i class="dot"></i>Link to theme</button>
+  </div>
+  <div class="card roledesc" id="roledesc" aria-live="polite">Every sentence has a job. Choose a colour above to see that job on its own.</div>
+
+  <div class="card model" id="model-box" data-focus="all">
+    <p>
+<sup class="n">1</sup><span class="seg r-frame">Even the most beautiful moments eventually give way to something ordinary, often before anyone has even noticed.</span>
+<sup class="n">2</sup><span class="seg r-frame">“Nothing Gold Can Stay” by Robert Frost suggests that change is quiet and unavoidable, and that what is most precious can easily be replaced by something plain and ordinary without any dramatic warning</span> <span class="seg r-tech">through the use of metaphor, personification, and imagery.</span>
+<sup class="n">3</sup>Frost introduces this idea through the <span class="seg r-tech">metaphor</span> <span class="seg r-quote">“Nature’s first green is gold” (Frost 1).</span>
+<sup class="n">4</sup><span class="seg r-mean">This compares the delicate first leaves of spring to a precious metal, and the word “gold” captures both their shimmering colour and the value society places on gold as a precious metal.</span>
+<sup class="n">5</sup><span class="seg r-eff">As a result, the reader pictures the beginning of the season as a treasure, which creates a feeling of wonder before any loss is mentioned.</span>
+<sup class="n">6</sup><span class="seg r-link">This establishes what is at stake in the theme, because the more precious the beginning appears, the more painful its disappearance becomes.</span>
+<sup class="n">7</sup><span class="seg r-link">It also suggests that people only recognise the value of a moment once it is almost over.</span>
+<sup class="n">8</sup>Frost then goes on to <span class="seg r-tech">personify</span> nature as a figure who struggles to protect this treasure, stating that gold is <span class="seg r-quote">“Her hardest hue to hold” (Frost 2).</span>
+<sup class="n">9</sup><span class="seg r-mean">By giving nature human qualities, the poet turns a changing season into a struggle, and the word “hue” gives nature the eye of a painter who watches a carefully created colour begin to fade.</span>
+<sup class="n">10</sup><span class="seg r-eff">This makes the reader sympathise with nature, while the verb “hold” creates a sense of effort and helplessness, as though something is slipping through the speaker’s fingers.</span>
+<sup class="n">11</sup><span class="seg r-link">This reflects how people try to hold on to what they love, but holding on to a moment is as impossible as holding on to a colour, which strengthens the theme that change is unavoidable.</span>
+<sup class="n">12</sup>The poem’s turning point arrives in the image <span class="seg r-quote">“Then leaf subsides to leaf” (Frost 5).</span>
+<sup class="n">13</sup><span class="seg r-tech">The repetition of the word “leaf”</span> <span class="seg r-mean">shows the golden stage of nature returning to something ordinary, and the use of the word “subsides,” usually used for a wave or a feeling gently disappearing or going away, suggests a change so gradual that it is barely noticed by the person observing.</span>
+<sup class="n">14</sup><span class="seg r-eff">The flatness of the line surprises the reader, who may expect a dramatic ending but instead experiences a calm fading, which makes the loss feel quieter and more realistic.</span>
+<sup class="n">15</sup><span class="seg r-link">This develops the theme by suggesting that change is not always a disaster but a settling into the ordinary, so the real sadness lies in the loss of wonder rather than in any sudden catastrophe.</span>
+<sup class="n">16</sup><span class="seg r-frame">Overall, Frost uses metaphor, personification, and imagery to present beautiful things as precious because they are brief.</span>
+<sup class="n">17</sup><span class="seg r-frame">The poem clearly shows that individuals should notice and appreciate good moments in their lives before, like the gold in the poem, those treasures quietly disappear.</span>
+    </p>
+    <label class="togg"><input type="checkbox" id="numtoggle" checked> Show sentence numbers</label>
+  </div>
+
+  <div class="why">
+    <div class="tint h-blue"><b class="lab">What to notice · A</b><p>Each technique is named, tied to a quotation, and its effect on the reader is explained. Every point finishes by strengthening the theme.</p></div>
+    <div class="tint h-green"><b class="lab">What to notice · B</b><p>The same cycle repeats three times between a framing opening and closing. Each quotation arrives inside a sentence, with a citation.</p></div>
+    <div class="tint h-orange"><b class="lab">What to notice · D</b><p>Formal, present tense and third person. The verbs vary: captures, establishes, reflects, strengthens, suggests.</p></div>
+  </div>
+  <div class="next"><button class="go" data-go="language">Next: Language →</button></div>
+</section>
+
+<!-- LANGUAGE -->
+<section class="sec h-orange" id="language">
+  <div class="sec-head"><span class="sec-tag">Criterion D · Using Language</span><h2>Academic tone and varied language</h2></div>
+  <p class="lead">Your audience is academic and formal. Use precise words, write in the <span class="hl">present tense</span>, and keep the poet and the poem as your subject.</p>
+
+  <h3 class="sub-h">Swap informal for formal</h3>
+  <div class="card tablewrap">
+    <table>
+      <thead><tr><th>Instead of</th><th>Write</th></tr></thead>
+      <tbody>
+        <tr><td class="no">shows</td><td>conveys, illustrates, portrays, reveals</td></tr>
+        <tr><td class="no">makes you feel</td><td>evokes, creates a sense of, encourages the reader to feel</td></tr>
+        <tr><td class="no">I think the poet wants</td><td>the poet intends, the poet suggests</td></tr>
+        <tr><td class="no">a lot of</td><td>numerous, considerable, a series of</td></tr>
+        <tr><td class="no">sad</td><td>melancholic, mournful, sorrowful</td></tr>
+        <tr><td class="no">gets across</td><td>communicates, expresses</td></tr>
+        <tr><td class="no">says</td><td>states, declares, reflects on</td></tr>
+        <tr><td class="no">don’t, can’t, it’s</td><td>do not, cannot, it is</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="sub-h">Verb bank for analysis</h3>
+  <div class="bank">
+    <div class="card bankc"><h3>Suggest or reveal</h3><div class="words"><span class="w">suggests</span><span class="w">conveys</span><span class="w">illustrates</span><span class="w">portrays</span><span class="w">reveals</span><span class="w">implies</span></div></div>
+    <div class="card bankc"><h3>Strengthen or stress</h3><div class="words"><span class="w">emphasises</span><span class="w">reinforces</span><span class="w">underscores</span><span class="w">highlights</span><span class="w">intensifies</span></div></div>
+    <div class="card bankc"><h3>Create an effect</h3><div class="words"><span class="w">evokes</span><span class="w">creates</span><span class="w">establishes</span><span class="w">generates</span><span class="w">captures</span></div></div>
+    <div class="card bankc"><h3>Connect to theme</h3><div class="words"><span class="w">reflects</span><span class="w">develops</span><span class="w">strengthens</span><span class="w">echoes</span><span class="w">mirrors</span></div></div>
+  </div>
+
+  <h3 class="sub-h">Linking words</h3>
+  <div class="bank">
+    <div class="card bankc"><h3>Add</h3><div class="words"><span class="w">furthermore</span><span class="w">also</span><span class="w">in addition</span></div></div>
+    <div class="card bankc"><h3>Result</h3><div class="words"><span class="w">as a result</span><span class="w">consequently</span><span class="w">therefore</span></div></div>
+    <div class="card bankc"><h3>Contrast</h3><div class="words"><span class="w">however</span><span class="w">in contrast</span><span class="w">whereas</span></div></div>
+    <div class="card bankc"><h3>Sequence</h3><div class="words"><span class="w">then</span><span class="w">next</span><span class="w">finally</span></div></div>
+    <div class="card bankc"><h3>Conclude</h3><div class="words"><span class="w">overall</span><span class="w">ultimately</span><span class="w">in conclusion</span></div></div>
+  </div>
+
+  <h3 class="sub-h">Vary your sentence structures</h3>
+  <div class="variety">
+    <div class="tint vrow h-orange"><b>Simple</b><span>The metaphor frames spring as treasure.</span></div>
+    <div class="tint vrow h-orange"><b>Compound</b><span>The metaphor frames spring as treasure<span class="hl">, and</span> the reader senses its value.</span></div>
+    <div class="tint vrow h-orange"><b>Complex</b><span><span class="hl">Because</span> the metaphor frames spring as treasure, its disappearance feels more painful.</span></div>
+  </div>
+  <div class="next"><button class="go" data-go="proofread">Next: Proofreading →</button></div>
+</section>
+
+<!-- PROOFREAD -->
+<section class="sec h-orange" id="proofread">
+  <div class="sec-head"><span class="sec-tag">Criteria D3 and D4</span><h2>Proofreading strategies</h2></div>
+  <p class="lead">Read the paragraph several times, each time looking for one kind of problem.</p>
+
+  <div class="passes">
+    <div class="tint pass h-blue"><span class="st">Pass 1</span><b>Meaning and logic</b><span>Does every sentence do a job and link to the theme?</span></div>
+    <div class="tint pass h-orange"><span class="st">Pass 2</span><b>Grammar and punctuation</b><span>Complete sentences, commas, apostrophes, doubled marks.</span></div>
+    <div class="tint pass h-purple"><span class="st">Pass 3</span><b>Spelling and terminology</b><span>Every technique name spelled correctly.</span></div>
+    <div class="tint pass h-pink"><span class="st">Pass 4</span><b>Quotations</b><span>Exact wording, quotation marks and a citation each time.</span></div>
+  </div>
+
+  <h3 class="sub-h">Common slips</h3>
+  <div class="errs">
+    <div class="card err"><h3>Tense</h3><p>Write about the poem in the present tense.</p><p class="ex"><s>Frost used metaphor</s> → Frost uses metaphor</p></div>
+    <div class="card err"><h3>Doubled punctuation</h3><p>Check the end of lists and clauses for stray marks.</p><p class="ex"><s>metaphor, imagery,.</s> → metaphor and imagery.</p></div>
+    <div class="card err"><h3>Spelling style</h3><p>Choose British or American spelling and keep it throughout.</p><p class="ex"><s>colour and sympathize</s> → colour and sympathise</p></div>
+    <div class="card err"><h3>Agreement</h3><p>The subject and verb must match.</p><p class="ex"><s>Frost use</s> → Frost uses</p></div>
+    <div class="card err"><h3>Poem titles</h3><p>Put titles in quotation marks, with capitals on the main words.</p><p class="ex">“Nothing Gold Can Stay”</p></div>
+    <div class="card err"><h3>Tone</h3><p>Remove contractions, “you”, slang and “I think”.</p><p class="ex"><s>it doesn’t change</s> → it does not change</p></div>
+  </div>
+
+  <h3 class="sub-h">Terminology spelling bank</h3>
+  <div class="words" style="gap:8px">
+    <span class="w h-purple" style="--c:var(--purple)">personification</span><span class="w" style="--c:var(--purple)">juxtaposition</span><span class="w" style="--c:var(--purple)">onomatopoeia</span>
+    <span class="w" style="--c:var(--purple)">enjambment</span><span class="w" style="--c:var(--purple)">caesura</span><span class="w" style="--c:var(--purple)">assonance</span>
+    <span class="w" style="--c:var(--purple)">sibilance</span><span class="w" style="--c:var(--purple)">alliteration</span><span class="w" style="--c:var(--purple)">symbolism</span>
+    <span class="w" style="--c:var(--purple)">connotation</span><span class="w" style="--c:var(--purple)">metaphor</span><span class="w" style="--c:var(--purple)">imagery</span>
+    <span class="w" style="--c:var(--purple)">oxymoron</span><span class="w" style="--c:var(--purple)">paradox</span><span class="w" style="--c:var(--purple)">hyperbole</span><span class="w" style="--c:var(--purple)">anaphora</span>
+  </div>
+  <div class="next"><button class="go" data-go="check">Next: Final check →</button></div>
+</section>
+
+<!-- FINAL CHECK -->
+<section class="sec h-gold" id="check">
+  <div class="sec-head"><span class="sec-tag">before you finish</span><h2>Final check</h2></div>
+  <div class="prog">
+    <div class="proghead"><strong id="progtext">0 of 14 checked</strong><button class="reset" id="reset" type="button">Clear ticks</button></div>
+    <div class="bar" role="progressbar" aria-label="Checklist progress" aria-valuemin="0" aria-valuemax="14" aria-valuenow="0" id="progbar"><i id="progfill"></i></div>
+  </div>
+  <div class="ckgrid" id="ckgrid"></div>
+</section>
+
+</main>
+
+<button class="totop" id="top" aria-label="Back to top" hidden>↑</button>
+
+<script>
+(function () {
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* navigation */
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-go]');
+    if (!b) return;
+    var el = document.getElementById(b.getAttribute('data-go'));
+    if (el) el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+  });
+  var navBtns = $$('.navbtn');
+  function setActive(id) {
+    navBtns.forEach(function (b) {
+      var on = b.getAttribute('data-go') === id;
+      b.setAttribute('aria-current', on ? 'true' : 'false');
+      if (on) {
+        var nav = $('.nav-in');
+        var left = b.offsetLeft - (nav.clientWidth - b.offsetWidth) / 2;
+        nav.scrollTo({ left: left, behavior: reduce ? 'auto' : 'smooth' });
+      }
+    });
+  }
+  var secs = $$('main > section');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) setActive(en.target.id); });
+    }, { rootMargin: '-25% 0px -65% 0px' });
+    secs.forEach(function (s) { io.observe(s); });
+  }
+  setActive('overview');
+  var topBtn = $('#top');
+  window.addEventListener('scroll', function () { topBtn.hidden = window.scrollY < 700; }, { passive: true });
+  topBtn.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); });
+
+  /* sentence map */
+  var roles = ['frame', 'frame'];
+  for (var c = 0; c < 3; c++) roles.push('tq', 'mean', 'eff', 'link');
+  roles.push('frame', 'frame', 'extra', 'extra', 'extra', 'extra');
+  var bud = $('#budget');
+  roles.forEach(function (r, i) {
+    var d = document.createElement('div');
+    d.className = 'cell ' + r + ((i === 13 || i === 19) ? ' lim' : '');
+    d.textContent = i + 1;
+    bud.appendChild(d);
+  });
+
+  /* techniques */
+  var T = [
+    ['Metaphor', 'Figurative', 'Describes one thing as if it were another, without “like” or “as”.', 'creates a vivid image that makes the reader see one thing in terms of another.', 'The classroom was a beehive.'],
+    ['Simile', 'Figurative', 'Compares two things using “like” or “as”.', 'highlights a shared quality and makes the image easier to picture.', 'Her voice was as thin as paper.'],
+    ['Personification', 'Figurative', 'Gives human actions or feelings to something that is not human.', 'encourages the reader to relate to or sympathise with the thing described.', 'The wind sighed at the window.'],
+    ['Imagery', 'Figurative', 'Language that appeals to the senses: sight, sound, smell, taste or touch.', 'helps the reader picture the scene and feel its mood.', 'the smell of wet pavement and burnt toast'],
+    ['Symbolism', 'Figurative', 'An object, colour or action that stands for a bigger idea.', 'adds a deeper layer of meaning beyond the literal.', 'A locked gate standing for a lost chance.'],
+    ['Hyperbole', 'Figurative', 'Deliberate exaggeration for emphasis.', 'stresses the strength of a feeling.', 'I have waited a thousand years.'],
+    ['Oxymoron', 'Figurative', 'Two opposite words placed together.', 'shows a conflict of feelings in a few words.', 'a deafening silence'],
+    ['Paradox', 'Figurative', 'A statement that seems to contradict itself but holds a truth.', 'makes the reader think again about an idea.', 'The more she gave, the more she had.'],
+    ['Juxtaposition', 'Figurative', 'Placing contrasting ideas or images side by side.', 'sharpens the difference between them.', 'a wedding party beside a ruined house'],
+    ['Irony', 'Figurative', 'A gap between what is said or expected and what is meant or happens.', 'exposes a hidden truth and can create bitterness or humour.', 'A fire station burns down.'],
+    ['Alliteration', 'Sound', 'Repeated consonant sounds at the start of nearby words.', 'draws attention to a phrase and gives it rhythm.', 'dark, dripping drains'],
+    ['Assonance', 'Sound', 'Repeated vowel sounds in nearby words.', 'creates a flowing, musical or mournful sound.', 'the moan of the slow road'],
+    ['Sibilance', 'Sound', 'Repeated “s” sounds.', 'can create a hushed, soft or sinister sound.', 'the silent snow slipped softly'],
+    ['Onomatopoeia', 'Sound', 'Words that imitate the sound they describe.', 'makes the scene feel immediate and real.', 'crackle, thud, hiss'],
+    ['Repetition', 'Sound', 'Repeating a word, phrase or line.', 'emphasises an idea or shows an obsession.', 'again, again, again'],
+    ['Anaphora', 'Sound', 'Repeating the opening words of successive lines or clauses.', 'builds momentum and insistence.', 'We waited. We watched. We wept.'],
+    ['Rhyme', 'Sound', 'Matching sounds at the end of words, usually at line ends.', 'creates pattern, a song-like flow or a sense of closure.', 'light / night'],
+    ['Rhyme scheme', 'Sound', 'The pattern of rhymes across lines, such as ABAB or AABB.', 'gives order; a broken pattern can signal a change.', 'ABAB: sky / road / high / load'],
+    ['Rhythm', 'Sound', 'The beat created by stressed and unstressed syllables.', 'speeds up or slows down the poem’s pace.', 'a steady, marching beat'],
+    ['Stanza', 'Structure', 'A group of lines in a poem, like a paragraph.', 'separates ideas and can show a shift.', 'A four-line stanza, then a two-line stanza.'],
+    ['Enjambment', 'Structure', 'A sentence or phrase that runs over a line break without a pause.', 'creates movement, urgency or a sense of spilling over.', 'The river carried / everything it loved'],
+    ['Caesura', 'Structure', 'A pause within a line, often made by punctuation.', 'slows the pace and stresses the words around it.', 'It ended. Quietly, we left.'],
+    ['End-stopped line', 'Structure', 'A line that finishes with punctuation and a complete thought.', 'creates a firm, controlled or final feeling.', 'The door was closed.'],
+    ['Volta', 'Structure', 'A turning point where the thought, tone or argument shifts.', 'signals a change of perspective.', '“But” or “yet” opening a new stanza.'],
+    ['Free verse', 'Structure', 'Poetry with no regular rhyme or metre.', 'feels natural, spoken and unrestrained.', 'Lines of different lengths with no rhyme.'],
+    ['Diction', 'Voice', 'The poet’s choice of words.', 'sets the tone and shapes how the reader feels.', '“gripped” instead of “held”'],
+    ['Connotation', 'Voice', 'The feelings or ideas a word carries beyond its literal meaning.', 'adds emotional shading to the image.', '“home” suggests safety and warmth'],
+    ['Tone', 'Voice', 'The attitude of the poet or speaker towards the subject.', 'guides how the reader should respond.', 'bitter, nostalgic, hopeful'],
+    ['Mood', 'Voice', 'The feeling the poem creates in the reader.', 'draws the audience into the atmosphere.', 'eerie, peaceful, tense'],
+    ['Speaker', 'Voice', 'The voice that narrates or speaks the poem.', 'shapes whose experience or belief we are given.', 'a child, an elder, an observer']
+  ];
+  var grid = $('#tgrid'), group = 'all', q = '';
+  T.forEach(function (t) {
+    var d = document.createElement('details');
+    d.className = 'tcard';
+    d.setAttribute('data-g', t[1]);
+    d.setAttribute('data-k', (t[0] + ' ' + t[2]).toLowerCase());
+    var gl = { Figurative: 'Figurative language', Sound: 'Sound', Structure: 'Structure', Voice: 'Voice and word choice' }[t[1]];
+    d.innerHTML = '<summary><span class="grp">' + gl + '</span><span class="term">' + t[0] + '</span><span class="def">' + t[2] + '</span></summary>' +
+      '<div class="more"><p><b>Effect:</b> This technique ' + t[3] + '</p><p><b>Spot it:</b> <span class="hl">' + t[4] + '</span></p></div>';
+    grid.appendChild(d);
+  });
+  function filterT() {
+    var n = 0;
+    $$('.tcard').forEach(function (c) {
+      var ok = (group === 'all' || c.getAttribute('data-g') === group) && (!q || c.getAttribute('data-k').indexOf(q) > -1);
+      c.hidden = !ok;
+      if (ok) n++;
+    });
+    $('#tcount').textContent = n + ' of ' + T.length + ' techniques shown';
+    $('#tempty').hidden = n > 0;
+  }
+  $$('#tfilters .fbtn').forEach(function (b) {
+    b.addEventListener('click', function () {
+      group = b.getAttribute('data-g');
+      $$('#tfilters .fbtn').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      filterT();
+    });
+  });
+  $('#tsearch').addEventListener('input', function (e) { q = e.target.value.trim().toLowerCase(); filterT(); });
+  $('#expandAll').addEventListener('click', function () { $$('.tcard').forEach(function (c) { if (!c.hidden) c.open = true; }); });
+  $('#collapseAll').addEventListener('click', function () { $$('.tcard').forEach(function (c) { c.open = false; }); });
+  filterT();
+
+  /* model paragraph focus */
+  var desc = {
+    all: 'Every sentence has a job. Choose a colour above to see that job on its own.',
+    frame: 'Frame (green): sentences 1, 2, 16 and 17. The opening states the poem, poet and theme. The closing restates the idea and its message for the audience.',
+    tech: 'Technique (purple): the device is named with exact terminology, such as metaphor, personify or repetition.',
+    quote: 'Quotation (pink): short, exact evidence, introduced by a lead-in and followed by a citation.',
+    mean: 'Meaning (blue): unpack the comparison or key word. What does it suggest?',
+    eff: 'Effect (cyan): what the reader pictures or feels as a result. This answers the “impact on an audience” part of the task.',
+    link: 'Link to theme (gold): tie the point back to the big idea, so every cycle ends on the theme.'
+  };
+  var mbox = $('#model-box');
+  $$('#focus .fbtn').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var f = b.getAttribute('data-f');
+      mbox.setAttribute('data-focus', f);
+      $$('#focus .fbtn').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      $('#roledesc').textContent = desc[f];
+    });
+  });
+  $('#numtoggle').addEventListener('change', function (e) { mbox.classList.toggle('hide-n', !e.target.checked); });
+
+  /* final checklist */
+  var groups = [
+    { k: 'a', c: 'h-blue', t: 'A · Analysing', items: [
+      'I named at least three techniques with correct terminology.',
+      'I explained the effect on the reader for each one.',
+      'I linked every point back to the theme.',
+      'I stated the poet’s intention or message.'] },
+    { k: 'b', c: 'h-green', t: 'B · Organising', items: [
+      'My opening names the poem, the poet and a clear theme statement.',
+      'Every quotation is introduced, exact and cited.',
+      'The paragraph has between 14 and 20 sentences.',
+      'My ideas follow a logical order.',
+      'I finished with a concluding sentence about the audience.'] },
+    { k: 'd', c: 'h-orange', t: 'D · Using Language', items: [
+      'My tone is formal, in the third person.',
+      'I wrote in the present tense throughout.',
+      'I varied verbs and sentence openings.',
+      'I checked punctuation and grammar.',
+      'I checked the spelling of every technique name.'] }
+  ];
+  var total = 0, store = {};
+  try { store = JSON.parse(localStorage.getItem('ulp-check') || '{}') || {}; } catch (e) { store = {}; }
+  var ck = $('#ckgrid');
+  groups.forEach(function (g) {
+    var box = document.createElement('div');
+    box.className = 'card ckc ' + g.c;
+    var html = '<h3>' + g.t + '</h3>';
+    g.items.forEach(function (it, i) {
+      var id = 'ck-' + g.k + i;
+      total++;
+      html += '<label class="ck" for="' + id + '"><input type="checkbox" id="' + id + '"' + (store[id] ? ' checked' : '') + '><span>' + it + '</span></label>';
+    });
+    box.innerHTML = html;
+    ck.appendChild(box);
+  });
+  function update() {
+    var n = $$('#ckgrid input:checked').length;
+    $('#progtext').textContent = n + ' of ' + total + ' checked';
+    $('#progfill').style.width = (n / total * 100) + '%';
+    var pb = $('#progbar');
+    pb.setAttribute('aria-valuenow', n);
+    pb.setAttribute('aria-valuemax', total);
+  }
+  ck.addEventListener('change', function (e) {
+    var t = e.target;
+    if (t && t.type === 'checkbox') {
+      store[t.id] = t.checked;
+      try { localStorage.setItem('ulp-check', JSON.stringify(store)); } catch (err) {}
+      update();
+    }
+  });
+  $('#reset').addEventListener('click', function () {
+    $$('#ckgrid input').forEach(function (i) { i.checked = false; });
+    store = {};
+    try { localStorage.removeItem('ulp-check'); } catch (err) {}
+    update();
+  });
+  update();
+})();
+</script>
+
+</body></html>
